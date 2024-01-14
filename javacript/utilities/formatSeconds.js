@@ -1,0 +1,10 @@
+export default function formatSeconds(secondsNumber) {
+    const hourInSeconds = 3600;
+    const minutesInSeconds = 60;
+
+    let hor = Math.floor( secondsNumber / hourInSeconds );
+    let min = Math.floor( (secondsNumber - hor * hourInSeconds) / minutesInSeconds );
+    let sec = Math.floor( secondsNumber - hor * hourInSeconds - min * minutesInSeconds );
+
+    return `${hor.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+}
