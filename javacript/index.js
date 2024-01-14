@@ -95,16 +95,6 @@ function searchMusic(e) {
 // Adicionando, removendo e renderizando as musicas na playlist.
 function addToPlaylist(song) {
     const playlistStorage = JSON.parse(localStorage.getItem('playlist')) || [];
-
-    if(playlistStorage.length === 0) {
-        
-        playlistStorage.push(song);
-        localStorage.setItem('playlist', JSON.stringify(playlistStorage));
-        alertUpdate('Adicionado a playlist');
-        renderPlaylist();
-        return;
-    }
-
     const isSongInPlaylist = playlistStorage.some(itemSong => itemSong.id === song.id);
 
     if(!isSongInPlaylist) {
