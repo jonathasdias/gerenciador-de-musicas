@@ -33,14 +33,15 @@ let isRepetSong = false;
 function loadPlayer() {
     if(shuffledSongList.length < 1) {
         player.classList.add('hidden');
-        main.innerHTML = '<p class="text-3xl">Sua playlist esta vázia</p>';
+        main.innerHTML = '<p class="text-3xl">Sua Lista de musicas está vazia</p>';
         return;
     }
 
     player.classList.remove('hidden');
     img_player.src = shuffledSongList[currentSong].songImg;
-    name_song.innerHTML = shuffledSongList[currentSong].songName;
-    name_singer.innerHTML = shuffledSongList[currentSong].singerName;
+    img_player.alt = `Capa da música: ${shuffledSongList[currentSong].songName} de ${shuffledSongList[currentSong].singerName}`;
+    name_song.textContent = shuffledSongList[currentSong].songName;
+    name_singer.textContent = shuffledSongList[currentSong].singerName;
     audio.src = shuffledSongList[currentSong].song;
 }
 
@@ -71,13 +72,15 @@ function nextSong() {
 // Funcionalidades de pausar e iniciar a musica.
 function playSong() {
     audio.play();
-    btn_play.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    btn_play.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i>';
+    btn_play.ariaPressed = true;
     isPlaySong = true;
 }
 
 function pauseSong() {
     audio.pause();
-    btn_play.innerHTML = '<i class="fa-solid fa-play"></i>';
+    btn_play.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i>';
+    btn_play.ariaPressed = false;
     isPlaySong = false;
 }
 
@@ -108,10 +111,12 @@ function checkIsShuffled() {
     if(!isShuffled) {
         shuffleArray(shuffledSongList);
         btn_shuffle.classList.add('text-green-600');
+        btn_shuffle.ariaPressed = true;
         isShuffled = true;
     }else {
         shuffledSongList = [...playlistStorage];
         btn_shuffle.classList.remove('text-green-600');
+        btn_shuffle.ariaPressed = false;
         isShuffled = false;
     }
 }
@@ -120,9 +125,11 @@ function checkIsShuffled() {
 function checkIsRepeat() {
     if(!isRepetSong) {
         btn_repet.classList.add('text-green-600');
+        btn_repet.ariaPressed = true;
         isRepetSong = true;
     }else {
         btn_repet.classList.remove('text-green-600');
+        btn_repet.ariaPressed = false;
         isRepetSong = false;
     }
 }

@@ -26,7 +26,7 @@ const Linkin = {
     id: 4,
     songName: 'In The End',
     song: './music/Linkin.mp3',
-    songImg: './imgs/guitar.jpg',
+    songImg: './imgs/guitar.webp',
     singerName: 'Mellen Gi & Tommee Profitt'
 }
 
@@ -74,7 +74,7 @@ const Runnin = {
     id: 10,
     songName: 'Runnin',
     song: './music/Runnin.mp3',
-    songImg: './imgs/mobile.jpg',
+    songImg: './imgs/mobile.webp',
     singerName: 'Adam Lambert'
 }
 
@@ -90,7 +90,7 @@ const TheScientist = {
     id: 12,
     songName: 'The Scientist',
     song: './music/The Scientist.mp3',
-    songImg: './imgs/mic.jpg',
+    songImg: './imgs/mic.webp',
     singerName: 'Boyce Avenue & Hannah Trigwell'
 }
 

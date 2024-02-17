@@ -18,23 +18,24 @@ function musicCard(song) {
     const img = document.createElement('img');
     img.className = 'w-full h-full rounded-t-lg';
     img.src = song.songImg;
-    img.alt = 'imagem da musica'
+    img.alt = `Capa da música: ${song.songName} de ${song.singerName}`;
 
     const nameSong = document.createElement('h2');
     nameSong.className = 'px-2 mt-1 font-extrabold text-xl';
-    nameSong.innerHTML = song.songName;
+    nameSong.textContent = song.songName;
     
     const nameSinger = document.createElement('h3');
     nameSinger.classList.add('px-2');
-    nameSinger.innerHTML = song.singerName;
+    nameSinger.textContent = song.singerName;
     
     const container_btn = document.createElement('div');
     container_btn.classList.add('text-center', 'py-4');
 
     const btn = document.createElement('button');
     btn.className = 'rounded-full bg-green-600 text-white w-12 h-12';
-    btn.title="Adicione a sua playList";
-    btn.innerHTML = '<i class="fa-solid fa-plus"></i>';
+    btn.title="Adicione a sua lista de musicas";
+    btn.ariaLabel = "Adicionar a sua lista de musicas";
+    btn.innerHTML = '<i class="fa-solid fa-plus" aria-hidden="true"></i>';
     btn.onclick = ()=> addToPlaylist(song);
 
     figure.appendChild(img);
@@ -50,13 +51,15 @@ function musicCard(song) {
 function songPlaylistCard(song) {
     const article = document.createElement('article');
     article.id = song.id;
-    article.className = "bg-green-600 text-white flex justify-between p-2";
+    article.className = "bg-green-800 text-white flex justify-between p-2";
     
     const nameSong = document.createElement('p');
-    nameSong.innerHTML = song.songName;
+    nameSong.textContent = song.songName;
     
     const btn = document.createElement('button');
     btn.className = "text-red-600";
+    btn.title = "Remover musica";
+    btn.ariaLabel = "Remover musica";
     btn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     btn.onclick = ()=> removeFromPlaylist(song.id);
 
@@ -95,15 +98,6 @@ function searchMusic(e) {
 // Adicionando, removendo e renderizando as musicas na playlist.
 function addToPlaylist(song) {
     const playlistStorage = JSON.parse(localStorage.getItem('playlist')) || [];
-
-    // if(playlistStorage.length === 0) {
-        
-    //     playlistStorage.push(song);
-    //     localStorage.setItem('playlist', JSON.stringify(playlistStorage));
-    //     alertUpdate('Adicionado a playlist');
-    //     renderPlaylist();
-    //     return;
-    // }
 
     const isSongInPlaylist = playlistStorage.some(itemSong => itemSong.id === song.id);
 
@@ -163,11 +157,23 @@ btn_page_player.addEventListener('click', ()=> {
 
 // Abrir e fechar a playList.
 btn_open_playList.addEventListener('click', ()=> {
-    container_playList.classList.remove('top-[-100vh]')
-    container_playList.classList.add('top-0')
+    
+    container_playList.classList.remove('hidden');
+    setTimeout(() => {
+        btn_open_playList.ariaPressed = true;
+        container_playList.classList.remove('top-[-100vh]');
+        container_playList.classList.add('top-0');
+    }, 1);
+
 })
 
 btn_clear_playlist.addEventListener('click', ()=> {
+    
     container_playList.classList.remove('top-0');
-    container_playList.classList.add('top-[-100vh]')
+    container_playList.classList.add('top-[-100vh]');
+    btn_clear_playlist.ariaPressed = false;
+    setTimeout(() => {
+        container_playList.classList.add('hidden');
+    }, 100);
+
 })
