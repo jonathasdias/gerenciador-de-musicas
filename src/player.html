@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="HTML, CSS, JavaScript, React">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="description" content="Um site para gerenciar e tocar musicas.">
     <meta name="author" content="Jonathas Dias">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 <body>
     
     <a href="./index.html" aria-label="Voltar pagina anterior" class="fixed top-4 left-4 text-gray-300 hover:text-gray-100">Voltar</a>
-
+    
     <main id="main" class="min-h-screen flex justify-center items-center bg-gray-900 text-gray-200 px-4">
 
         <section id="player" class="w-[30rem] hidden">
@@ -34,13 +34,13 @@
                 </div>
 
                 <div class="flex justify-between">
-                    <span id="current-time">00:00:00</span>
-                    <span id="duration-total">00:00:00</span>
+                    <span id="current-time">00:00</span>
+                    <span id="duration-total">00:00</span>
                 </div>
             </div>
     
             <div class="my-6 flex justify-between items-center px-4 text-xl">
-                <button id="btn-shuffle" aria-pressed="false" aria-label="Embaralhar musicas"><i class="fa-solid fa-shuffle" aria-hidden="true"></i></button>
+                <button id="btn-shuffle" title="Embaralhar musicas" aria-pressed="false" aria-label="Embaralhar musicas"><i class="fa-solid fa-shuffle" aria-hidden="true"></i></button>
 
                 <button id="btn-prev" aria-label="Voltar música" class="text-3xl hover:text-gray-50"><i class="fa-solid fa-backward-step" aria-hidden="true"></i></button>
 
@@ -48,7 +48,7 @@
 
                 <button id="btn-next" aria-label="Próxima música" class="text-3xl hover:text-gray-50"><i class="fa-solid fa-forward-step" aria-hidden="true"></i></button>
 
-                <button id="btn-repet" aria-pressed="false" aria-label="Repetir música"><i class="fa-solid fa-repeat" aria-hidden="true"></i></button>
+                <button id="btn-repet" title="Repetir música" aria-pressed="false" aria-label="Repetir música"><i class="fa-solid fa-repeat" aria-hidden="true"></i></button>
             </div>
     
         </section>

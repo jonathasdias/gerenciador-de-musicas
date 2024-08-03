@@ -164,7 +164,6 @@ btn_open_playList.addEventListener('click', ()=> {
         container_playList.classList.remove('top-[-100vh]');
         container_playList.classList.add('top-0');
     }, 1);
-
 })
 
 btn_clear_playlist.addEventListener('click', ()=> {
@@ -175,5 +174,4 @@ btn_clear_playlist.addEventListener('click', ()=> {
     setTimeout(() => {
         container_playList.classList.add('hidden');
     }, 100);
-
 })
